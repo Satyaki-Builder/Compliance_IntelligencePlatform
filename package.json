@@ -14,8 +14,11 @@
     "@emotion/styled": "^11.14.1",
     "@hashicorp/design-system-tokens": "^5.0.0",
     "@hashicorp/flight-icons": "^5.0.0",
+    "@headlessui/react": "^2.2.10",
+    "@heroicons/react": "^2.2.0",
     "@mui/icons-material": "^9.0.1",
     "@mui/material": "^9.0.1",
+    "clsx": "^2.1.1",
     "react": "^19.2.6",
     "react-dom": "^19.2.6"
   },
