@@ -51,11 +51,15 @@
 }
 
 #root {
-  width: 1126px;
+  width: 100%; /* Changed from 1126px to fill the screen */
   max-width: 100%;
-  margin: 0 auto;
+  margin: 0;   /* Removed auto margin */
   text-align: center;
-  border-inline: 1px solid var(--border);
+  
+  /* The Fix: Left line grey, right line none */
+  border-left: 1px solid #d1d5db; 
+  border-right: none; 
+  
   min-height: 100svh;
   display: flex;
   flex-direction: column;

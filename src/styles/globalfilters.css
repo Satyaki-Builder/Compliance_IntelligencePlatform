@@ -1,0 +1,123 @@
+/* --- CONTAINER --- */
+.filter-container {
+  background-color: white;
+  padding: 0px 24px;
+  border-bottom: 1px solid #e5e7eb;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 64px;
+  width: 100%;
+  box-sizing: border-box;
+  /* This creates the 16px horizontal space between every filter-wrapper */
+  gap: 16px; 
+  transition: all 0.3s ease;
+}
+
+/* --- WRAPPERS --- */
+.filter-wrapper {
+  position: relative;
+  display: inline-flex;
+}
+
+
+
+/* --- BUTTONS --- */
+.filter-button,
+.hierarchy-button,
+.export-button {
+  margin: 0;
+  box-sizing: border-box;
+  height: 38px; /* Fixed height for perfect baseline alignment */
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  padding: 0 16px;
+  white-space: nowrap;
+  transition: background 0.2s ease;
+}
+
+/* Shared Black Style */
+.filter-button,
+.hierarchy-button {
+  background: black;
+  color: white;
+  justify-content: space-between;
+}
+
+/* Specific Widths */
+.filter-button {
+  min-width: 160px;
+}
+
+.hierarchy-button, 
+.time-filter-button {
+  min-width: 200px;
+}
+
+/* Blue Export Style */
+.export-button {
+  background: #0ea5e9;
+  color: white;
+  margin-left: auto; /* Pushes it to the far right */
+  justify-content: center;
+  min-width: 150px;
+  height: 38px;
+  border-radius: 6px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+}
+
+/* Hover States */
+.filter-button:hover,
+.hierarchy-button:hover { background: #262626; }
+.export-button:hover { background: #0284c7; }
+
+/* --- DROPDOWNS --- */
+.dropdown-menu {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  background: white;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  padding: 6px;
+  min-width: 100%;
+  box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  box-sizing: border-box;
+}
+
+.dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  cursor: pointer;
+  font-size: 13px;
+  color: #374151;
+  border-radius: 4px;
+  transition: background 0.2s;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.dropdown-item:hover { background-color: #f3f4f6; }
+.dropdown-item input { cursor: pointer; margin: 0; }
+
+/* --- DRAWER --- */
+.drawer-content-box {
+  width: 350px;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
