@@ -112,7 +112,7 @@ const getFilterLabel = (defaultLabel: string, selectedValues: string[], totalOpt
     <div className="filter-parent-container">
       <div className="filter-header-single-line">
         <span className="header-title">Apply Filters:</span>
-        <span className="header-desc">Refine dashboard metrics by selecting specific infrastructure and policy parameters.</span>
+        <span className="header-desc">Refine the dashboard metrics by selecting specific parameters.</span>
       </div>
 
       <div className="filter-row">
