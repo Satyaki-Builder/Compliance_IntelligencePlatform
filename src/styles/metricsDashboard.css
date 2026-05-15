@@ -1,0 +1,113 @@
+/* Container - Tighter spacing for better integration under the Recommendation Panel */
+.metrics-container {
+  padding: 0px 4px 0px 4px; 
+  display: flex;
+  flex-direction: column;
+  gap: 4px; /* Tighten gap between all elements */
+}
+
+.filter-header-single-line {
+  margin-top: 0; 
+  margin-bottom: 0;
+  display: flex;
+  align-items: center;
+}
+
+.header-title {
+  /* Ensure the text itself doesn't have a default margin-top */
+  margin-top: 0; 
+  padding: 0px;
+  font-weight: 600;
+  color: #374151;
+  /* Reduced font-size slightly to help with the tight aspect ratio */
+  font-size: 14px; 
+  text-transform: uppercase;
+}
+/* KPI Grid */
+.kpi-grid {
+  display: flex;
+  gap: 16px;
+  justify-content: space-between;
+}
+
+/* Base Metric Card */
+.metric-card {
+  flex: 1;
+  border-radius: 16px;
+  padding: 16px; /* Slightly reduced inner padding for compactness */
+  text-align: center;
+  background-color: white;
+  border: 2px solid transparent; /* Placeholder for status colors */
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.metric-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+/* Logic-driven Border Colors */
+.active-border {
+  border-color: #4ade80;
+}
+
+.runs-border {
+  border-color: #6366f1;
+}
+
+.failure-border {
+  border-color: #f87171;
+}
+
+/* Label Styles */
+.metric-label {
+  font-weight: bold;
+  font-size: 16px; /* Optimized for dashboard density */
+  margin-bottom: 6px;
+}
+
+.active-text { color: #4ade80; }
+.runs-text { color: #6366f1; }
+.failure-text { color: #f87171; }
+
+/* Value Styles */
+.metric-value {
+  font-size: 32px; /* Balanced size for "12.3K" type strings */
+  font-weight: bold;
+  color: #1f2937;
+}
+
+/* Chart Section */
+.chart-section {
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 20px;
+  background-color: white;
+}
+
+.chart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.chart-title {
+  font-weight: 700;
+  font-size: 1.1rem;
+  text-decoration: underline;
+  color: #111827;
+}
+
+
+
+.average-pass-text {
+  font-size: 0.9rem;
+  color: #4b5563;
+}
+
+.chart-height {
+  height: 100px;
+  width: 100%;
+  padding-left: 0px !important;
+}

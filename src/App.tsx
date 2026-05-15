@@ -2,6 +2,7 @@ import { useState } from "react";
 import GlobalFilters from "./components/globalfilters";
 import RecommendationPanel from "./components/recommendationPanel";
 import type { GlobalFilterState } from "./interfaces/globalFilterState";
+import MetricsDashboard from "./components/metricsDashboard";
 import { Typography } from "@mui/material";
 
 function App() {
@@ -38,14 +39,18 @@ function App() {
       {/* MAIN CONTENT AREA */}
       <main style={{ flex: 1, backgroundColor: "white" }}>
         {/* Pass state and handler as props */}
+        
+          {/* Recommendation Panel */}  
+      <RecommendationPanel />
+
         <GlobalFilters 
           currentFilters={filterState} 
           onFilterChange={handleFilterChange} 
         />
         
-      {/* Recommendation Panel */}  
-      <RecommendationPanel />
 
+      {/* Placeholder for Metrics Dashboard */}
+      <MetricsDashboard filters={filterState} />
       </main>
     </div>
   );

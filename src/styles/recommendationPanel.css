@@ -8,9 +8,10 @@
   border-radius: 6px;
   
   /* SHORTEN HEIGHT: Reduced padding and min-height */
-  padding: 6px 16px; 
-  min-height: 32px; 
-  margin-bottom: 12px;
+  padding: 0px 4px 0px 4px; 
+  min-height: 36px; 
+  margin-top: 0px !important;
+  margin-bottom: 4px !important;
   gap: 12px;
 }
 
