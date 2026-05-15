@@ -8,56 +8,86 @@ interface Props {
 }
 
 const MetricsDashboard: React.FC<Props> = ({ filters }) => {
+  
   const { stats, chartData } = useMemo(() => {
-    // 1. Apply filters to the base array
     let filteredList = MockPolicies;
 
-    if (filters.engines && filters.engines.length > 0) {
+    // 1. ADVANCED Time Range Filtering (Handles Strings & Custom Ranges)
+    const now = new Date();
+    let startDate: Date;
+    let endDate: Date = new Date(); // Defaults to now
+
+    if (filters.timeRange.includes(" - ")) {
+      // HANDLE CUSTOM RANGE: "YYYY-MM-DD - YYYY-MM-DD"
+      const [startStr, endStr] = filters.timeRange.split(" - ");
+      startDate = new Date(startStr);
+      // Set end date to the end of that day (23:59:59)
+      endDate = new Date(endStr);
+      endDate.setHours(23, 59, 59, 999);
+    } else {
+      // HANDLE PRESETS
+      startDate = new Date();
+      if (filters.timeRange === "Past 24 hours") {
+        startDate.setHours(now.getHours() - 24);
+      } else if (filters.timeRange === "Last 7 days") {
+        startDate.setDate(now.getDate() - 7);
+      } else if (filters.timeRange === "Last 30 days") {
+        startDate.setDate(now.getDate() - 30);
+      } else if (filters.timeRange === "Last 90 days") {
+        startDate.setDate(now.getDate() - 90);
+      } else {
+        startDate = new Date(0); // Default to all time
+      }
+    }
+
+    // Apply the Date Filter
+    filteredList = filteredList.filter(p => {
+      const runDate = new Date(p.last_run);
+      return runDate >= startDate && runDate <= endDate;
+    });
+
+    // 2. CATEGORY FILTERING (Remain the same)
+    if (filters.engines?.length > 0) {
       filteredList = filteredList.filter(p => filters.engines.includes(p.engine));
     }
-    if (filters.region && filters.region.length > 0) {
+    if (filters.region?.length > 0) {
       filteredList = filteredList.filter(p => filters.region.includes(p.region));
     }
-    if (filters.severity && filters.severity.length > 0) {
+    if (filters.severity?.length > 0) {
       filteredList = filteredList.filter(p => filters.severity.includes(p.severity));
     }
-    if (filters.types && filters.types.length > 0) {
+    if (filters.types?.length > 0) {
       filteredList = filteredList.filter(p => filters.types.includes(p.type));
     }
-    if (filters.providers && filters.providers.length > 0) {
+    if (filters.providers?.length > 0) {
       filteredList = filteredList.filter(p => filters.providers.includes(p.provider));
     }
 
-    // 2. KPI Logic: Unique names, Failures, and Total Runs
+    // 3. KPI & TIME SERIES GENERATION (Remain the same)
     const uniqueNames = new Set(filteredList.map(p => p.name));
-    const activeCount = uniqueNames.size;
     const failureCount = filteredList.filter(p => p.status === "Failed").length;
     const totalRuns = filteredList.length;
     const passRate = totalRuns > 0 ? ((totalRuns - failureCount) / totalRuns) * 100 : 0;
 
-    // 3. Time Series Logic: Group filtered data by last_run date
     const timeGroups: { [key: string]: { date: string; passed: number; total: number } } = {};
-
     filteredList.forEach(policy => {
-      const dateKey = policy.last_run.split('T')[0]; // Extracts YYYY-MM-DD
+      const dateKey = policy.last_run.split('T')[0];
       if (!timeGroups[dateKey]) {
         timeGroups[dateKey] = { date: dateKey, passed: 0, total: 0 };
       }
       timeGroups[dateKey].total += 1;
-      if (policy.status === "Passed") {
-        timeGroups[dateKey].passed += 1;
-      }
+      if (policy.status === "Passed") timeGroups[dateKey].passed += 1;
     });
 
     const derivedChartData = Object.values(timeGroups)
       .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())
       .map(group => ({
-        displayDate: group.date.split('-').reverse().slice(0, 2).join('/'), // DD/MM format
+        displayDate: group.date.split('-').reverse().slice(0, 2).join('/'),
         pass_rate: Math.round((group.passed / group.total) * 100)
       }));
 
     return { 
-      stats: { activeCount, totalRuns, failures: failureCount, passRate },
+      stats: { activeCount: uniqueNames.size, totalRuns, failures: failureCount, passRate },
       chartData: derivedChartData 
     };
   }, [filters]);
@@ -87,7 +117,7 @@ const MetricsDashboard: React.FC<Props> = ({ filters }) => {
 
       <div className="chart-section">
         <div className="chart-header">
-          <span className="chart-title">Overall Pass Rate</span>
+          <span className="chart-title">Pass Rate Series</span>
           <span className="average-pass-text">
             Average Pass Rate: <strong>{stats.passRate.toFixed(2)}%</strong>
           </span>
