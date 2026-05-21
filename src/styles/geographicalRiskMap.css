@@ -1,0 +1,133 @@
+/* Section Container Layout - Trimmed down to align perfectly with the platform grid */
+.hcp-footprint-section {
+  width: 100%;
+  margin-top: 4px; /* Reduced to match standard sectional gaps */
+  margin-left: -20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px; /* Tightened gap between subtitle heading and the metric cards */
+  box-sizing: border-box;
+  padding: 0; /* Zeroed out to prevent accidental indentation shifts */
+}
+
+/* Subtitle Heading: Stripped of left indents to mirror COMPLIANCE OUTLOOK */
+.hcp-section-subtitle-heading {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: #334155; /* Slate-700 */
+  letter-spacing: 0.05em;
+  margin: 0;
+  padding: 0; /* Clears any legacy default browser or layout spacing overrides */
+  text-align: left;
+  width: 100%;
+}
+
+/* Horizontal Flex Row holding all 3 panels */
+.hcp-footprint-metrics-row {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px; /* Keeps card gaps consistent with the rest of your UI grid */
+}
+
+/* Map Dashboard Panel Box (Metric 3) */
+.hcp-risk-map-panel {
+  width: calc(33.33vw - 24px);
+  min-width: 320px;
+  height: 350px;
+  background: #ffffff;
+  border: 1px solid #e1e4e8;
+  border-radius: 6px;
+  padding: 16px; /* Restored standard internal card padding */
+  display: flex;
+  flex-direction: column; /* Stacks title on top of the map vertically */
+  align-items: center;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+/* Structural Placeholders for Metrics 1 and 2 */
+.hcp-placeholder-metric-card {
+  width: calc(33.33vw - 24px);
+  height: 350px;
+  background: #ffffff;
+  border: 1px solid #e1e4e8;
+  border-radius: 6px;
+  display: flex;
+  justify-content: center;
+  align-items: right;
+  box-sizing: border-box;
+}
+
+/* SVG Rendering Optimization Canvas */
+.hcp-risk-map-canvas-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+}
+
+/* New clean styling for your inner metric title */
+.hcp-card-inner-title {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: #1e293b; /* Deep slate professional gray */
+  margin-top: 0;
+  margin-bottom: 12px; /* Smooth gap before map rendering begins */
+  text-align: center;
+  width: 100%;
+}
+
+/* Continental Boundaries Shading (HashiCorp Purple) */
+.hcp-risk-map-landmass {
+  fill: #844FBA;
+  stroke: #ffffff;
+  stroke-width: 0.5px;
+  outline: none;
+}
+
+/* Interactive Overlay Core */
+.hcp-risk-map-bubble-core {
+  fill: #7EEE1E;
+  fill-opacity: 0.75;
+  stroke: #49c4c4;
+  stroke-width: 1px;
+}
+
+.hcp-risk-map-bubble-core:hover {
+  fill-opacity: 0.90;
+  stroke-width: 1.5px;
+}
+
+/* Ambient Accent Underlay Ring */
+.hcp-risk-map-bubble-glow {
+  fill: #7EEE1E;
+  fill-opacity: 0.15;
+  pointer-events: none;
+}
+
+/* Centered Label Metrics */
+.hcp-risk-map-bubble-number-only {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  fill: #1f2937;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* Map Canvas Layout Wrapper */
+.hcp-risk-map-canvas-container {
+  width: 100%;
+  flex: 1; /* Automatically stretches to fill the card under the title */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+}
