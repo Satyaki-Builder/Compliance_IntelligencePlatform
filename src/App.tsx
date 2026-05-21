@@ -4,6 +4,9 @@ import RecommendationPanel from "./components/recommendationPanel";
 import type { GlobalFilterState } from "./interfaces/globalFilterState";
 import MetricsDashboard from "./components/metricsDashboard";
 import { Typography } from "@mui/material";
+import { GeographicalRiskMap } from "./components/geographicalRiskMap";
+import "./styles/metricsDashboard.css";
+import "./styles/geographicalRiskMap.css";
 
 function App() {
   // Initialize the global filter state
@@ -19,7 +22,7 @@ function App() {
 
   // Centralized handler to update state from child components
   const handleFilterChange = (key: keyof GlobalFilterState, value: any) => {
-    setFilterState((prev:any) => ({
+    setFilterState((prev: any) => ({
       ...prev,
       [key]: value,
     }));
@@ -31,26 +34,25 @@ function App() {
       <aside style={{ width: "240px", borderRight: "1px solid #e5e7eb", backgroundColor: "#f9fafb", padding: "20px" }}>
         <div style={{ color: "#6b7280", fontWeight: "bold", marginBottom: "20px" }}>Manage</div>
         <nav style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
-           <div>Projects</div>
-           <div>Stacks</div>
+          <div>Projects</div>
+          <div>Stacks</div>
         </nav>
       </aside>
 
       {/* MAIN CONTENT AREA */}
       <main style={{ flex: 1, backgroundColor: "white" }}>
         {/* Pass state and handler as props */}
-        
-          {/* Recommendation Panel */}  
-      <RecommendationPanel />
 
-        <GlobalFilters 
-          currentFilters={filterState} 
-          onFilterChange={handleFilterChange} 
-        />
-        
+        {/* Recommendation Panel */}
+        <RecommendationPanel />
 
-      {/* Placeholder for Metrics Dashboard */}
-      <MetricsDashboard filters={filterState} />
+        <GlobalFilters currentFilters={filterState} onFilterChange={handleFilterChange}/>
+
+        {/* Placeholder for Metrics Dashboard */}
+        <MetricsDashboard filters={filterState} />
+
+        {/* Map Visualization Panel Mounted at root content level */}
+        {/*<div style={{ padding: "0 24px 24px 24px" }}><GeographicalRiskMap filters={filterState} /></div>*/}
       </main>
     </div>
   );
