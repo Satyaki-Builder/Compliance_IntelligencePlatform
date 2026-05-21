@@ -5,8 +5,11 @@ import type { GlobalFilterState } from "./interfaces/globalFilterState";
 import MetricsDashboard from "./components/metricsDashboard";
 import { Typography } from "@mui/material";
 import { GeographicalRiskMap } from "./components/geographicalRiskMap";
+import { PolicyHealthDashboard } from "./components/policyErrorTable";
 import "./styles/metricsDashboard.css";
 import "./styles/geographicalRiskMap.css";
+import { UngovernedResourcesTables } from "./components/ungovernedResourcesTable";
+import { UngovernedResourcesMetrics } from "./components/ungovernedResourcesMetrics";
 
 function App() {
   // Initialize the global filter state
@@ -50,6 +53,20 @@ function App() {
 
         {/* Placeholder for Metrics Dashboard */}
         <MetricsDashboard filters={filterState} />
+
+        {/* Mounted Policy Health Dashboard directly beneath Metrics Dashboard */}
+        {/*<div style={{ padding: "0 24px 24px 24px" }}>
+          <PolicyHealthDashboard filters={filterState} />
+        </div>*/}
+
+        {}
+        {/*<div style={{ padding: "0 24px 24px 24px" }}>
+          <UngovernedResourcesTables filters={filterState} />
+        </div>*/}
+
+       {/* <div style={{ padding: "0 24px 24px 24px" }}>
+          <UngovernedResourcesMetrics/>
+        </div> */}
 
         {/* Map Visualization Panel Mounted at root content level */}
         {/*<div style={{ padding: "0 24px 24px 24px" }}><GeographicalRiskMap filters={filterState} /></div>*/}

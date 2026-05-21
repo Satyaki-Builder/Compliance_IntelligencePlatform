@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { mockUngovernedResources } from '../services/ungovernedResources';
+import type { GlobalFilterState } from '../interfaces/globalFilterState'; // 1. Import your filter type
 import '../styles/ungovernedResourcesTable.css';
 
-// Import your newly added platform assets
+// Import your platform assets
 import slackIcon from '../assets/slack.png';
 import teamsIcon from '../assets/teams.png';
 import outlookIcon from '../assets/outlook.png';
@@ -14,9 +15,18 @@ export interface PopUpMetadata {
   lastRun: string;
 }
 
-export const UngovernedResourcesTables: React.FC = () => {
+// 2. Define the explicit Props interface to match what App.tsx is passing down
+export interface UngovernedResourcesTablesProps {
+  filters: GlobalFilterState;
+}
+
+// 3. Update React.FC to accept your new interface definition
+export const UngovernedResourcesTables: React.FC<UngovernedResourcesTablesProps> = ({ filters }) => {
   const [modalContext, setModalContext] = useState<PopUpMetadata | null>(null);
   const [selectedRowId, setSelectedRowId] = useState<string | null>(null);
+
+  // Note: You can now use the `filters` prop inside this component to run matching 
+  // operations against `mockUngovernedResources` similar to your Policy Dashboard!
 
   const handleEnvironmentClick = (e: React.MouseEvent, resource: typeof mockUngovernedResources[0]) => {
     e.stopPropagation();
@@ -78,7 +88,7 @@ export const UngovernedResourcesTables: React.FC = () => {
                 <th>Workspace Name</th>
                 <th>Source</th>
                 <th>Environment</th>
-                <th>Resources Imapcted</th>
+                <th>Resources Impacted</th>
               </tr>
             </thead>
             <tbody>
