@@ -1,0 +1,268 @@
+.table-split-wrapper-right {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  padding: 12px 0;
+}
+
+/* Outer component bounding block configured to stark clean white border layout */
+.enterprise-dashboard-container {
+  position: relative; 
+  padding: 24px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background-color: #ffffff;
+  border: 1px solid #ffffff; /* Updated purple outline to crisp enterprise white */
+  border-radius: 8px;
+  width: 50%;
+  box-sizing: border-box;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+}
+
+/* Master Ribbon containing both Title and Integrations on an identical baseline */
+.table-dashboard-header-ribbon {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px; /* Tightly padded line space down to table boundary box */
+}
+
+.main-section-title {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0; /* Cleared margin traps to prevent axis line offset shifts */
+  color: #1e293b;
+}
+
+.collaboration-tray {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+/* Polished image button controls */
+.icon-btn-asset {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #475569;
+  background-color: #f8fafc;
+  border: 1px solid #cbd5e1;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.icon-btn-asset:hover {
+  background-color: #f1f5f9;
+  border-color: #94a3b8;
+  color: #1e293b;
+}
+
+/* Fine-tuning image dimensions inside asset action nodes */
+.brand-logo-img {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+  display: inline-block;
+}
+
+.table-scroll-viewport {
+  max-height: 295px; 
+  overflow-y: scroll;
+  overflow-x: auto;
+  border: 1px solid #cbd5e1; 
+  border-radius: 6px;
+}
+
+/* Persistent Browser Scroll Track Rendering overrides */
+.persistent-scroll::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+  display: block !important;
+}
+
+.persistent-scroll::-webkit-scrollbar-track {
+  background: #f8fafc;
+  border-radius: 6px;
+}
+
+.persistent-scroll::-webkit-scrollbar-thumb {
+  background: #cbd5e1; 
+  border-radius: 6px;
+  border: 2px solid #f8fafc;
+}
+
+.persistent-scroll::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+.compliance-data-table {
+  width: 100%;
+  min-width: 480px;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 14px;
+  color: #334155;
+}
+
+.compliance-data-table th {
+  background-color: #f8fafc;
+  color: #475569;
+  padding: 10px 14px;
+  font-weight: 600;
+  border-bottom: 1px solid #cbd5e1;
+  position: sticky;
+  top: 0;
+  z-index: 5;
+}
+
+.compliance-data-table td {
+  padding: 12px 14px;
+  border-bottom: 1px solid #e2e8f0; 
+  background-color: #ffffff;
+}
+
+.data-row-target:last-child td {
+  border-bottom: none;
+}
+
+.data-row-target:hover td {
+  background-color: #f8fafc;
+}
+
+.interactive-env-link {
+  text-decoration: underline;
+  color: #2563eb; 
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.interactive-env-link:hover {
+  color: #1d4ed8;
+}
+
+.resources-cell {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: center;
+  text-align: center;
+}
+
+.status-indicator-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.status-indicator-dot.risk-critical { background-color: #ef4444; } 
+.status-indicator-dot.risk-high { background-color: #f59e0b; }     
+.status-indicator-dot.risk-nominal { background-color: #6366f1; }  
+
+.count-value {
+  font-weight: 500;
+  color: #1e293b;
+}
+
+/* Portal Overlay Backdrop constraints */
+.modal-overlay-backdrop {
+  position: absolute; 
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(15, 23, 42, 0.25); 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+  border-radius: 8px;
+  backdrop-filter: blur(1px);
+}
+
+.modal-content-window {
+  background: #ffffff;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 380px;
+  padding: 20px;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e2e8f0;
+  animation: modalScaleIn 0.12s ease-out;
+}
+
+@keyframes modalScaleIn {
+  from { transform: scale(0.97); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.modal-header-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  border-bottom: 1px solid #f1f5f9;
+  padding-bottom: 8px;
+}
+
+.modal-header-bar h3 {
+  margin: 0;
+  font-size: 15px;
+  color: #0f172a;
+  font-weight: 700;
+}
+
+.close-modal-icon-btn {
+  background: none;
+  border: none;
+  font-size: 22px;
+  color: #94a3b8;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0;
+}
+
+.close-modal-icon-btn:hover {
+  color: #475569;
+}
+
+.modal-body-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  text-align: center;
+}
+
+.modal-field label {
+  display: block;
+  font-size: 10px;
+  font-weight: 700;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 2px;
+}
+
+.modal-field p {
+  margin: 0;
+  font-size: 13px;
+  color: #1e293b;
+  font-weight: 500;
+}
+
+.modal-field code {
+  background-color: #f1f5f9;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: monospace;
+  font-size: 12px;
+  color: #0f172a;
+}
+
+.modal-email-text {
+  color: #2563eb;
+}
